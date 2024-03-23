@@ -1,0 +1,302 @@
+/* navbar styles */
+.Navbar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  height: 3rem;
+  align-items: center;
+  background-color: #1b1529;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 2.5% 9%;
+  box-sizing: border-box;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  color: white;
+}
+.right_nav {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.mainLogo {
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+.nav_list_item {
+  color: white;
+  font-weight: 500;
+  margin-left: 1rem;
+}
+.signup_item {
+  background-color: #bb8b41;
+  border-radius: 30px;
+  font-style: normal;
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.login_item {
+  color: #bb8b41;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.search_item img {
+  /* width: 100%; */
+  cursor: pointer;
+}
+
+/* footer styles */
+.footer {
+  background-color: #1b1529;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 2% 9% 4% 9%;
+  box-sizing: border-box;
+}
+.footer_left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  width: fit-content;
+}
+.footer_right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: end;
+  gap: 3rem;
+}
+.footer_column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.column_head {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 1.5rem 0;
+}
+.column_list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.list_item {
+  text-align: left;
+  color: white;
+}
+.list_item a {
+  line-height: 1;
+  color: white;
+  font-weight: 300;
+  font-size: 0.95rem;
+}
+.icon_list {
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+}
+.icon_link {
+  background-color: rgba(250, 248, 248, 0.2);
+  margin-left: 4px;
+  margin-right: 1px;
+  padding: 0.6rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  cursor: pointer;
+}
+
+.icon_link img {
+  width: 100%;
+}
+
+/* mini footer / copyright footer styles */
+.copyright_container {
+  width: 100%;
+  background-color: #1b1529;
+  box-sizing: border-box;
+  padding: 5% 9%;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+.copyright_grid {
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+.copyright_div {
+  text-align: left;
+}
+.copyright_div span {
+  color: #bb8b41;
+}
+.copyright_cookies {
+  text-align: right;
+  color: #bb8b41;
+  font-weight: 500;
+}
+.copyright {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+/* auth nav styling */
+.nav_text {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.auth_nav {
+  background-color: #2f2f40;
+}
+
+.auth_nav a {
+  color: #bb8b41;
+}
+
+/* auth footer styling */
+.auth_footer {
+  width: 100%;
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 4rem 0 2rem 0;
+}
+.auth_footer span {
+  color: #bb8b41;
+}
+
+/* side nav styling */
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 0.7rem;
+  width: 18vw;
+  background: #2f2f40;
+  height: 100%;
+  position: fixed;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+.sidenav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+.sidenav ul li {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  align-items: flex-start;
+  cursor: pointer;
+  color: white;
+}
+.sidenav ul li:hover {
+  font-weight: 500;
+}
+.sidenav ul .nav_icon {
+  width: 1.1rem;
+}
+.sidenav .opened_tab {
+  background: #f6fbff17;
+  color: white;
+  font-weight: 500;
+}
+.sidenav ul:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.sidenav .nav_section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+.sidenav .sidenav_logo {
+  text-align: center;
+}
+
+/* lil nav styling */
+.LilNav {
+  border: 1px solid #f5f5f5;
+  border-left: none;
+  padding: 0.8rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #ffffff;
+  align-items: center;
+  font-size: 0.9rem;
+  width: 77.5vw;
+  position: fixed;
+  z-index: 2;
+  color: #2f2f40;
+}
+.LilNav ul {
+  margin: 0;
+  padding: 0;
+}
+.lilnav_title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2f2f40;
+}
+.dash_name{
+  color: #2f2f40;
+}
+.profile_picture {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50px;
+}
+.LilNav ul {
+  display: flex;
+  flex-direction: row;
+  text-transform: capitalize;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.LilNav ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+.LilNav .profile_icon {
+  border: 1.5px solid #2f2f40;
+  padding: 0.1rem;
+  box-sizing: border-box;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50px;
+}
+.LilNav .lilnav_icon {
+  cursor: pointer;
+}

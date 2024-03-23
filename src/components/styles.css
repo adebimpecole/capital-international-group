@@ -1,0 +1,30 @@
+/* card styles */
+.card{
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 24px 32px;
+    background-color: white;
+    align-items: flex-start;
+    color: #2F2F40;
+}
+.card_title{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.card_text{
+    font-size: .9rem;
+    text-align: left;
+    margin: .5rem 0;
+    padding-bottom: .5rem;
+}
+.card_button{
+    background-color: #BB8B41;
+    border-radius: 30px;
+    font-style: normal;
+    color: white;
+    font-weight: 500;
+    font-size: .9rem;
+    padding: .7rem 1rem;
+}
