@@ -57,27 +57,30 @@ export const addToFirestore = async (the_colllection, data) => {
     });
 };
 
-// Function to update data in Firestore
 export const updateFirestore = async (
-  the_colllection,
+  the_collection,
   fieldName,
   the_match,
   data
 ) => {
-  console.log(data);
-  const collectionRef = collection(db, the_colllection);
+  const collectionRef = collection(db, the_collection);
   const q = query(collectionRef, where(fieldName, "==", the_match));
 
   const querySnapshot = await getDocs(q);
+  let isUpdated = false; // Flag to track update completion
 
-  querySnapshot.forEach(async (doc) => {
-    try {
+  try {
+    await Promise.all(querySnapshot.docs.map(async (doc) => {
       const docRef = doc.ref;
       await updateDoc(docRef, data);
-    } catch (error) {
-      console.error(`Error adding document to '${type}' collection:`, error);
-    }
-  });
+    }));
+    isUpdated = true; // Update successful
+  } catch (error) {
+    console.error(`Error updating document:`, error);
+    throw error; // Rethrow error if update fails
+  }
+
+  return isUpdated; // Return flag indicating update status
 };
 
 // Function to update data in Firestore

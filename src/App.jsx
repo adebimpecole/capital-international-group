@@ -12,6 +12,8 @@ function App() {
   const SignUp = lazy(() => import("./pages/SignUp"));
   const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
   const ForgotPassword2 = lazy(() => import("./pages/ForgotPassword2"));
+  const ForgetPassword3 = lazy(() => import("./pages/ForgetPassword3"));
+
 
   const Profile = lazy(() => import("./pages/Profile"));
 
@@ -120,6 +122,15 @@ function App() {
             element={
               <Suspense fallback={<div>Loading...</div>}>
                 <ForgotPassword2 />
+              </Suspense>
+            }
+          />
+          <Route
+            exact
+            path="/forgot3"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <ForgetPassword3 />
               </Suspense>
             }
           />

@@ -3,33 +3,32 @@ import { useLocation, useNavigate } from "react-router-dom";
 import AuthNav from "../sections/AuthNav";
 import AuthFooter from "../sections/AuthFooter";
 import { Context } from "../utilities/Context";
+import { ToastContainer } from "react-toastify";
 
 
 const ForgotPassword2 = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const gen_code = location.state.code;
-  const email = location.state.email;
-
+  const email = location.state ? location.state.email : '';
+  const gen_code = location.state ? location.state.code : '';
 
   let { user, setuser, id, setid, errorMessage } = useContext(Context);
 
   const [code, setCode] = useState("");
 
-
-  const checkCode = () => {
+  const checkCode = (e) => {
+    e.preventDefault()
     if(code == ''){
-        errorMessage('Enter code')
-
+        errorMessage('Enter the code sent to your email')
     }
     else{
-        if(code == gen_code){
+        if(code === gen_code){
           navigate("/forgot3", { state: { email: email} });
 
         }
         else{
-            errorMessage('Incorrect code')
+            errorMessage('Incorrect code!')
         }
     }
   }
@@ -63,6 +62,7 @@ const ForgotPassword2 = () => {
         </form>
         <AuthFooter />
       </div>
+      <ToastContainer/>
     </div>
   );
 };

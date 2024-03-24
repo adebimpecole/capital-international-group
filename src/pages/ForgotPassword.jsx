@@ -9,38 +9,47 @@ import EMAILJS_USER_ID from "../config/config";
 
 import { generateCustomId } from "../utilities/otherFunctions";
 import { fetchDataFromFirestore } from "../utilities/firebaseFunctions";
+import { ToastContainer } from "react-toastify";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
 
-  let { user, setuser, id, setid, successMessage } = useContext(Context);
+  let { user, setuser, id, setid, successMessage, errorMessage } =
+    useContext(Context);
 
   const requestCode = async (e) => {
     e.preventDefault();
     let code = generateCustomId("REQ", 5);
+    if (email == "") {
+      errorMessage("Enter your email");
+    } else {
+      const userData = await fetchDataFromFirestore("users", "email", email);
 
-    const userData = await fetchDataFromFirestore("users", "email", email);
+      setuser(userData.first_name);
+      setid(userData.userId);
 
-    setuser(userData.first_name);
-    setid(userData.userId);
+      if (userData.userId != null) {
+        // Sending email using EmailJS
+        const serviceId = "service_t4divkd";
+        const templateId = "template_blevcqa";
 
-    if (userData.userId != null) {
-      // Sending email using EmailJS
-      const serviceId = "service_t4divkd";
-      const templateId = "template_blevcqa";
-
-      // Send email
-      await emailjs.send(serviceId, templateId, {
-        user: userData.first_name,
-        email: email,
-        code: code,
-    }, EMAILJS_USER_ID);
+        // Send email
+        await emailjs.send(
+          serviceId,
+          templateId,
+          {
+            user: userData.first_name,
+            email: email,
+            code: code,
+          },
+          EMAILJS_USER_ID
+        );
+      }
       successMessage("Code sent!");
+      navigate("/forgot2", { state: { email: email, code: code } });
     }
-
-    navigate("/forgot2", { state: { email: email, code: code } });
   };
   return (
     <div className="login">
@@ -76,6 +85,7 @@ const ForgotPassword = () => {
         </form>
         <AuthFooter />
       </div>
+      <ToastContainer />
     </div>
   );
 };
