@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import AuthNav from "../sections/AuthNav";
 import AuthFooter from "../sections/AuthFooter";
-
+import { auth } from "../config/firebase";
 import { Context } from "../utilities/Context";
-import EMAILJS_USER_ID from "../config/config";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 import { generateCustomId } from "../utilities/otherFunctions";
 import { fetchDataFromFirestore } from "../utilities/firebaseFunctions";
@@ -21,35 +21,17 @@ const ForgotPassword = () => {
 
   const requestCode = async (e) => {
     e.preventDefault();
-    let code = generateCustomId("REQ", 5);
-    if (email == "") {
-      errorMessage("Enter your email");
-    } else {
-      const userData = await fetchDataFromFirestore("users", "email", email);
 
-      setuser(userData.first_name);
-      setid(userData.userId);
-
-      if (userData.userId != null) {
-        // Sending email using EmailJS
-        const serviceId = "service_t4divkd";
-        const templateId = "template_blevcqa";
-
-        // Send email
-        await emailjs.send(
-          serviceId,
-          templateId,
-          {
-            user: userData.first_name,
-            email: email,
-            code: code,
-          },
-          EMAILJS_USER_ID
-        );
-      }
-      successMessage("Code sent!");
-      navigate("/forgot2", { state: { email: email, code: code } });
-    }
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        successMessage("Password reset email sent");
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+    });
+    navigate('/login')
   };
   return (
     <div className="login">

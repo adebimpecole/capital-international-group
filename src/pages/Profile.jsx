@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useId, useState } from "react";
 import { Context } from "../utilities/Context";
 import { excludeEmptyStrings } from "../utilities/otherFunctions";
 
-import { getFirestore } from "firebase/firestore";
 import { listAll, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../config/firebase";
 import {
@@ -11,6 +10,7 @@ import {
   uploadImage,
   updateFirestore,
 } from "../utilities/firebaseFunctions";
+
 
 import SideNav from "../sections/SideNav";
 import LilNav from "../sections/LilNav";
